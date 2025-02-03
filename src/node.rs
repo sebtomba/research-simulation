@@ -51,10 +51,6 @@ where
         self.id = Some(id);
     }
 
-    fn receive(&self, _sender: ProcessId, _message: M) -> Box<dyn Process<T>> {
-        todo!()
-    }
-
     fn handle(&self, sender: ProcessId, message: M) -> Box<dyn Process<T>> {
         self.handler
             .handle(self.id.expect("after node init"), sender, message)
